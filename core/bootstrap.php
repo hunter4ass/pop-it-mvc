@@ -3,7 +3,7 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 
 const DIR_CONFIG = '/../config';
-
+Src\DB::connect($app->settings->db);
 function getConfigs(string $path = DIR_CONFIG): array {
     $settings = [];
     foreach (scandir(__DIR__ . $path) as $file) {
