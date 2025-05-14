@@ -2,8 +2,13 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use Src\DB;
+use Src\Application;
+use Src\Settings;
+
+// Загрузка конфигов
 const DIR_CONFIG = '/../config';
-Src\DB::connect($app->settings->db);
+
 function getConfigs(string $path = DIR_CONFIG): array {
     $settings = [];
     foreach (scandir(__DIR__ . $path) as $file) {
@@ -15,6 +20,13 @@ function getConfigs(string $path = DIR_CONFIG): array {
     return $settings;
 }
 
+$config = getConfigs(); // теперь у нас есть $config['db'], $config['path'] и т.д.
+
+// Подключение к БД
+DB::connect($config['db'] ?? []);
+
+// Регистрация маршрутов
 require_once __DIR__ . '/../routes/web.php';
 
-return new Src\Application(new Src\Settings(getConfigs()));
+// Возврат объекта приложения
+return new Application(new Settings($config));
