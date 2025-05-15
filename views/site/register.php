@@ -1,6 +1,7 @@
-<h2>Регистрация</h2>
+<h2>Регистрация нового пользователя</h2>
+<h3><?= $message ?? ''; ?></h3>
 <form method="post" action="/register">
-    <input type="text" name="email" placeholder="Email"><br>
-    <input type="password" name="password" placeholder="Пароль"><br>
-    <button type="submit">Зарегистрироваться</button>
+  <label>Email <input type="text" name="email"></label><br>
+  <label>Пароль <input type="password" name="password"></label><br>
+  <button type="submit">Зарегистрироваться</button>
 </form>

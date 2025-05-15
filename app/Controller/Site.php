@@ -14,30 +14,25 @@ class Site
    {
        echo 'working hello';
    }
-   public function registerForm(): string
-{
-    return new \Src\View('site.register');
-}
-   public function register(Request $request): string
+public function register(Request $request): string
 {
     $data = $request->all();
+    $message = '';
 
-    
     if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-        return 'Неверный email';
+        $message = 'Неверный email';
+    } elseif (strlen($data['password']) < 6) {
+        $message = 'Пароль должен быть не менее 6 символов';
+    } else {
+        User::create([
+            'email' => $data['email'],
+            'password' => password_hash($data['password'], PASSWORD_DEFAULT)
+        ]);
+        $message = 'Пользователь зарегистрирован!';
     }
 
-    if (strlen($data['password']) < 6) {
-        return 'Пароль должен быть не менее 6 символов';
-    }
-
-    
-    $user = User::create([
-        'email' => $data['email'],
-        'password' => password_hash($data['password'], PASSWORD_DEFAULT)
-    ]);
-
-    return 'Пользователь зарегистрирован!';
+    return new \Src\View('site.register', ['message' => $message]);
 }
+
 
 }
