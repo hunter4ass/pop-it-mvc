@@ -3,7 +3,7 @@
         'name' => 'egor-ilchuk/pop-it-mvc',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'ae7f6c49b9ad0a3a469608b1ce60e0b516479cdf',
+        'reference' => '2dd9cd5999e12072006c5ba74fa6315a6d555543',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'egor-ilchuk/pop-it-mvc' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'ae7f6c49b9ad0a3a469608b1ce60e0b516479cdf',
+            'reference' => '2dd9cd5999e12072006c5ba74fa6315a6d555543',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
